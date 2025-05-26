@@ -61,18 +61,18 @@ plots_dir = os.path.join("доп часть", "python_analysis", "plots")
 os.makedirs(plots_dir, exist_ok=True)
 
 # --- График 1: Распределение задач по статусам ---
+df["priority"].value_counts().plot(kind="pie", autopct="%1.1f%%", title="Приоритеты задач")
+plt.ylabel("")
+plt.tight_layout()
+plt.savefig(os.path.join(plots_dir, "priority_distribution.png"))
+plt.close()
+
+# --- График 2: Соотношение приоритетов ---
 df["status"].value_counts().plot(kind="bar", title="Распределение задач по статусам")
 plt.xlabel("Статус")
 plt.ylabel("Количество задач")
 plt.tight_layout()
 plt.savefig(os.path.join(plots_dir, "status_distribution.png"))
-plt.close()
-
-# --- График 2: Соотношение приоритетов ---
-df["priority"].value_counts().plot(kind="pie", autopct="%1.1f%%", title="Приоритеты задач")
-plt.ylabel("")
-plt.tight_layout()
-plt.savefig(os.path.join(plots_dir, "priority_distribution.png"))
 plt.close()
 
 # --- График 3: Зависимость статуса от приоритета ---
